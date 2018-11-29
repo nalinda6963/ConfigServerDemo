@@ -1,0 +1,22 @@
+spring:
+  profiles:
+    active: vault, git
+  cloud:
+    config:
+      server:
+        git:
+          order: 2
+          uri: https://github.com/nalinda6963/demo-configuration
+#          ignoreLocalSshSettings: true
+          searchPaths:
+          - '{application}'
+          - '{profile}'
+        vault:
+          order: 1
+          port: 8200
+          host: 127.0.0.1
+          scheme: http
+          backend:  secret
+          kvVersion: 2
+          uri: http://localhost:8200
+          token: 1Iu0KpuKamBhUWEZRl9VzqlW
