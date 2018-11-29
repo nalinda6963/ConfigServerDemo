@@ -23,22 +23,22 @@ $ vault token lookup
 $ export VAULT_ADDR='http://127.0.0.1:8200'
 ```
 
-5. Export the vault token
+6. Export the vault token
 ```
 $ export VAULT_TOKEN=<token_from_step_3>
 ```
 
-6. Insert a secret in to vault (ConfigClientDemo = application name)
+7. Insert a secret in to vault (ConfigClientDemo = application name)
 ```
 $ vault kv put secret/ConfigClientDemo foo=bar_vault
 ```
 
-7. Start up the config server 
+8. Start up the config server 
 ```
 $ mvn spring-boot:run
 ```
 
-8. Fetch configurations
+9. Fetch configurations
 ```
 $ curl -s http://127.0.0.1:8080/foo/default -H "X-Config-Token: <token_from_step_3>"
 ```
