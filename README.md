@@ -15,30 +15,35 @@ $ vault server -dev
 ```
 $ vault token lookup
 ```
+4. Update the aplication yml file in the following location with the token from step 3
+```
+src/main/resources/application.yml
+```
++ If you are planing to use the [client code](https://github.com/nalinda6963/ConfigClientDemo), update the /src/main/resources/bootstrap.yml file with the same token (this file is in the [ConfigClientDemo](https://github.com/nalinda6963/ConfigClientDemo) project.
 
-4. Open another teminal
+5. Open another teminal
 
-5. Export the vault address 
+6. Export the vault address 
 ```
 $ export VAULT_ADDR='http://127.0.0.1:8200'
 ```
 
-6. Export the vault token
+7. Export the vault token
 ```
 $ export VAULT_TOKEN=<token_from_step_3>
 ```
 
-7. Insert a secret in to vault (ConfigClientDemo = application name)
+8. Insert a secret in to vault (ConfigClientDemo = application name)
 ```
 $ vault kv put secret/ConfigClientDemo foo=bar_vault
 ```
 
-8. Start up the config server 
+9. Start up the config server 
 ```
 $ mvn spring-boot:run
 ```
 
-9. Fetch configurations
+10. Fetch configurations
 ```
 $ curl -s http://127.0.0.1:8080/foo/default -H "X-Config-Token: <token_from_step_3>"
 ```
